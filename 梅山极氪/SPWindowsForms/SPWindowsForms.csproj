@@ -1,0 +1,820 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8D97DFA2-3925-4EBB-8EA6-8A5431A99A98}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>SPWindowsForms</RootNamespace>
+    <AssemblyName>SPWindowsForms</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>control_panel_22756.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.9.0.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>..\packages\Portable.BouncyCastle.1.9.0\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="ClosedXML, Version=0.102.2.0, Culture=neutral, PublicKeyToken=fd1eb21b62ae805b, processorArchitecture=MSIL">
+      <HintPath>..\packages\ClosedXML.0.102.2\lib\netstandard2.0\ClosedXML.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.16.0.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.16.0\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelNumberFormat, Version=1.1.0.0, Culture=neutral, PublicKeyToken=23c6f5d73be07eca, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelNumberFormat.1.1.0\lib\net20\ExcelNumberFormat.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf, Version=3.19.4.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.19.4\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="Irony, Version=1.0.11.0, Culture=neutral, PublicKeyToken=ca48ace7223ead47, processorArchitecture=MSIL">
+      <HintPath>..\packages\Irony.NetCore.1.0.11\lib\net461\Irony.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4, Version=1.2.6.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Compression.LZ4.1.2.6\lib\net46\K4os.Compression.LZ4.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4.Streams, Version=1.2.6.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Compression.LZ4.Streams.1.2.6\lib\net46\K4os.Compression.LZ4.Streams.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Hash.xxHash, Version=1.0.6.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Hash.xxHash.1.0.6\lib\net46\K4os.Hash.xxHash.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\lib\net461\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.3.0.0\lib\netstandard2.0\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.31.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.31\lib\net48\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.EntityFramework, Version=8.0.31.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.EntityFramework.8.0.31\lib\net452\MySql.Data.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="SixLabors.Fonts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d998eea7b14cab13, processorArchitecture=MSIL">
+      <HintPath>..\packages\SixLabors.Fonts.1.0.0\lib\netstandard2.0\SixLabors.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="SunnyUI, Version=3.7.2.0, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb, processorArchitecture=MSIL">
+      <HintPath>..\packages\SunnyUI.3.7.2\lib\net472\SunnyUI.dll</HintPath>
+    </Reference>
+    <Reference Include="SunnyUI.Common, Version=3.7.2.0, Culture=neutral, PublicKeyToken=5a271fb7ba597231, processorArchitecture=MSIL">
+      <HintPath>..\packages\SunnyUI.Common.3.7.2\lib\net472\SunnyUI.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.5.0.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.6.0.0\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Packaging, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Packaging.6.0.0\lib\net461\System.IO.Packaging.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive, Version=6.0.0.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reactive.6.0.0\lib\net472\System.Reactive.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.AccessControl, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.AccessControl.6.0.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Permissions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Permissions.6.0.0\lib\net461\System.Security.Permissions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Text.Encoding.CodePages, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encoding.CodePages.4.5.1\lib\net461\System.Text.Encoding.CodePages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.RegularExpressions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.RegularExpressions.4.3.1\lib\net463\System.Text.RegularExpressions.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TwinCAT.Ads, Version=4.3.30.0, Culture=neutral, PublicKeyToken=180016cd49e5e8c3, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\TwinCAT\AdsApi\.NET\v4.0.30319\TwinCAT.Ads.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="XLParser, Version=1.5.2.0, Culture=neutral, PublicKeyToken=63397e1e46bb91b4, processorArchitecture=MSIL">
+      <HintPath>..\packages\XLParser.1.5.2\lib\net461\XLParser.dll</HintPath>
+    </Reference>
+    <Reference Include="ZstdNet, Version=1.4.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.31\lib\net48\ZstdNet.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdsConnect\CommonAdsControl.cs" />
+    <Compile Include="AdsConnect\CommonTaskRead.cs" />
+    <Compile Include="AdsConnect\IniAdsVarModel.cs" />
+    <Compile Include="AdsConnect\TwincateStruct\st_Pg.cs" />
+    <Compile Include="AdsConnect\TwincateStruct\PGs_Vac.cs" />
+    <Compile Include="AdsConnect\TwincateStruct\PGs_D.cs" />
+    <Compile Include="AdsConnect\TwincateStruct\PGs_C.cs" />
+    <Compile Include="AdsConnect\TwincateStruct\st_Ksystem.cs" />
+    <Compile Include="AdsConnect\TwincateStruct\st_hmi_IO.cs" />
+    <Compile Include="AdsConnect\TwincateStruct\st_IO_E.cs" />
+    <Compile Include="AdsConnect\TwincateStruct\st_IO_D.cs" />
+    <Compile Include="AdsConnect\TwincateStruct\st_IO_C.cs" />
+    <Compile Include="AdsConnect\TwincateStruct\st_ysgjz.cs" />
+    <Compile Include="AdsConnect\TwincateStruct\st_ups.cs" />
+    <Compile Include="AdsConnect\TwincateStruct\st_VacSource.cs" />
+    <Compile Include="AdsConnect\TwincateStruct\st_hmiauto.cs" />
+    <Compile Include="AdsConnect\TwincateStruct\st_ledauto.cs" />
+    <Compile Include="AdsConnect\TwincateStruct\st_test.cs" />
+    <Compile Include="AdsConnect\TwincateStruct\stsub_testdisplay.cs" />
+    <Compile Include="AdsConnect\TwincateStruct\hmi_st_layer.cs" />
+    <Compile Include="AdsConnect\TwincateStruct\PGs.cs" />
+    <Compile Include="AdsConnect\TwincateStruct\st_hmiTB_E.cs" />
+    <Compile Include="AdsConnect\TwincateStruct\st_hmiTB_C.cs" />
+    <Compile Include="AdsConnect\TwincateStruct\st_hmiTB_D.cs" />
+    <Compile Include="AdsConnect\TwincateStruct\st_alarm_C.cs" />
+    <Compile Include="AdsConnect\TwincateStruct\st_alarm_E.cs" />
+    <Compile Include="AdsConnect\TwincateStruct\st_alarm_D.cs" />
+    <Compile Include="AdsConnect\TwincateStruct\st_recipe_E1.cs" />
+    <Compile Include="AdsConnect\TwincateStruct\st_recipe_C1.cs" />
+    <Compile Include="AdsConnect\TwincateStruct\st_sample.cs" />
+    <Compile Include="AppForms\CopyOutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AppForms\CopyOutForm.Designer.cs">
+      <DependentUpon>CopyOutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AppForms\DownLoadForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AppForms\DownLoadForm.Designer.cs">
+      <DependentUpon>DownLoadForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AppForms\LanuageSelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AppForms\LanuageSelectForm.Designer.cs">
+      <DependentUpon>LanuageSelectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AppModels\SystemSettingModel.cs" />
+    <Compile Include="BasicTool\INIFile.cs" />
+    <Compile Include="DbService\AlarmLogCommon.cs" />
+    <Compile Include="DbService\PFLogCommon.cs" />
+    <Compile Include="ExcelHelper\ExcelHelperClass.cs" />
+    <Compile Include="ExcelHelper\ExcelReaderClass.cs" />
+    <Compile Include="SwitchForms\AirFilterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwitchForms\AirFilterControl.Designer.cs">
+      <DependentUpon>AirFilterControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchForms\AirFilterTitleControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwitchForms\AirFilterTitleControl.Designer.cs">
+      <DependentUpon>AirFilterTitleControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchForms\BottomPageSwitch.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwitchForms\BottomPageSwitch.Designer.cs">
+      <DependentUpon>BottomPageSwitch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchForms\CTongdaoControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwitchForms\CTongdaoControl.Designer.cs">
+      <DependentUpon>CTongdaoControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchForms\CWeiHuControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwitchForms\CWeiHuControl.Designer.cs">
+      <DependentUpon>CWeiHuControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchForms\DManualControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwitchForms\DManualControl.Designer.cs">
+      <DependentUpon>DManualControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchForms\DownloadTableControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwitchForms\DownloadTableControl.Designer.cs">
+      <DependentUpon>DownloadTableControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchForms\DTongdaoControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwitchForms\DTongdaoControl.Designer.cs">
+      <DependentUpon>DTongdaoControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchForms\DWeiHuControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwitchForms\DWeiHuControl.Designer.cs">
+      <DependentUpon>DWeiHuControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchForms\ETongdaoControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwitchForms\ETongdaoControl.Designer.cs">
+      <DependentUpon>ETongdaoControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchForms\EWeiHuControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwitchForms\EWeiHuControl.Designer.cs">
+      <DependentUpon>EWeiHuControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchForms\IOLightControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwitchForms\IOLightControl.Designer.cs">
+      <DependentUpon>IOLightControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchForms\IOSP6001Control.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwitchForms\IOSP6001Control.Designer.cs">
+      <DependentUpon>IOSP6001Control.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchForms\IOTitleControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwitchForms\IOTitleControl.Designer.cs">
+      <DependentUpon>IOTitleControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchForms\IOValueControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwitchForms\IOValueControl.Designer.cs">
+      <DependentUpon>IOValueControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchForms\IronPaperFilterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwitchForms\IronPaperFilterControl.Designer.cs">
+      <DependentUpon>IronPaperFilterControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchForms\MachinePfLogControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwitchForms\MachinePfLogControl.Designer.cs">
+      <DependentUpon>MachinePfLogControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchForms\PGsCControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwitchForms\PGsCControl.Designer.cs">
+      <DependentUpon>PGsCControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchForms\PGsDControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwitchForms\PGsDControl.Designer.cs">
+      <DependentUpon>PGsDControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchForms\PGsVacControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwitchForms\PGsVacControl.Designer.cs">
+      <DependentUpon>PGsVacControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchForms\ProcessControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwitchForms\ProcessControl.Designer.cs">
+      <DependentUpon>ProcessControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchForms\VacPicture6001Control.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwitchForms\VacPicture6001Control.Designer.cs">
+      <DependentUpon>VacPicture6001Control.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchForms\VacPicture6002Control.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwitchForms\VacPicture6002Control.Designer.cs">
+      <DependentUpon>VacPicture6002Control.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchForms\VacPicture9001Control.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwitchForms\VacPicture9001Control.Designer.cs">
+      <DependentUpon>VacPicture9001Control.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchForms\VacSetControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwitchForms\VacSetControl.Designer.cs">
+      <DependentUpon>VacSetControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchForms\WAlarmTableControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwitchForms\WAlarmTableControl.Designer.cs">
+      <DependentUpon>WAlarmTableControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchForms\WAutoControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwitchForms\WAutoControl.Designer.cs">
+      <DependentUpon>WAutoControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchForms\WBaoYangControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwitchForms\WBaoYangControl.Designer.cs">
+      <DependentUpon>WBaoYangControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchForms\WBenzuControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwitchForms\WBenzuControl.Designer.cs">
+      <DependentUpon>WBenzuControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchForms\WChuanganqiControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwitchForms\WChuanganqiControl.Designer.cs">
+      <DependentUpon>WChuanganqiControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchForms\WIoControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwitchForms\WIoControl.Designer.cs">
+      <DependentUpon>WIoControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchForms\WManualControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwitchForms\WManualControl.Designer.cs">
+      <DependentUpon>WManualControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchForms\WSheBeiGuanLiControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwitchForms\WSheBeiGuanLiControl.Designer.cs">
+      <DependentUpon>WSheBeiGuanLiControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchForms\WTongdaoControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwitchForms\WTongdaoControl.Designer.cs">
+      <DependentUpon>WTongdaoControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchForms\WWeihuControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwitchForms\WWeihuControl.Designer.cs">
+      <DependentUpon>WWeihuControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchForms\WXitongshedingControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwitchForms\WXitongshedingControl.Designer.cs">
+      <DependentUpon>WXitongshedingControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchForms\WYeyaControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwitchForms\WYeyaControl.Designer.cs">
+      <DependentUpon>WYeyaControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchForms\WYsgControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwitchForms\WYsgControl.Designer.cs">
+      <DependentUpon>WYsgControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchForms\WZhujiControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwitchForms\WZhujiControl.Designer.cs">
+      <DependentUpon>WZhujiControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util\CommonEnum.cs" />
+    <Compile Include="Util\CommonAdsUi.cs" />
+    <Compile Include="Util\CommonFunction.cs" />
+    <Compile Include="Util\CommonIniFiles.cs" />
+    <Compile Include="Util\CommonModels.cs" />
+    <Compile Include="Util\CommonVar.cs" />
+    <Compile Include="AppForms\CopyInForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AppForms\CopyInForm.Designer.cs">
+      <DependentUpon>CopyInForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DbService\SampleDBCommon.cs" />
+    <Compile Include="DbService\SearchSampleModel.cs" />
+    <Compile Include="DbService\UserDBCommon.cs" />
+    <Compile Include="DbService\PFDetailDBCommon.cs" />
+    <Compile Include="DbService\PFDBCommon.cs" />
+    <Compile Include="FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util\ConvertSampleTable.cs" />
+    <Compile Include="Util\GlobalVar.cs" />
+    <Compile Include="Util\Hook2OpenKeyboard.cs" />
+    <Compile Include="Util\LanguageSet.cs" />
+    <Compile Include="AppForms\LoadPfForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AppForms\LoadPfForm.Designer.cs">
+      <DependentUpon>LoadPfForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AppForms\NewPfForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AppForms\NewPfForm.Designer.cs">
+      <DependentUpon>NewPfForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AppForms\RenameForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AppForms\RenameForm.Designer.cs">
+      <DependentUpon>RenameForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AppForms\SetRoleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AppForms\SetRoleForm.Designer.cs">
+      <DependentUpon>SetRoleForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchForms\WLoginControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwitchForms\WLoginControl.Designer.cs">
+      <DependentUpon>WLoginControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchForms\WChartControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwitchForms\WChartControl.Designer.cs">
+      <DependentUpon>WChartControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchForms\PfPageConfigModel.cs" />
+    <Compile Include="SwitchForms\WPFControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwitchForms\WPFControl.Designer.cs">
+      <DependentUpon>WPFControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwitchForms\WPFEditControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwitchForms\WPFEditControl.Designer.cs">
+      <DependentUpon>WPFEditControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SwitchForms\WSystemMainControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwitchForms\WSystemMainControl.Designer.cs">
+      <DependentUpon>WSystemMainControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util\LogHelper.cs" />
+    <Compile Include="Util\Work.cs" />
+    <EmbeddedResource Include="AppForms\CopyInForm.resx">
+      <DependentUpon>CopyInForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppForms\CopyOutForm.resx">
+      <DependentUpon>CopyOutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppForms\DownLoadForm.resx">
+      <DependentUpon>DownLoadForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppForms\LanuageSelectForm.resx">
+      <DependentUpon>LanuageSelectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppForms\LoadPfForm.resx">
+      <DependentUpon>LoadPfForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppForms\NewPfForm.resx">
+      <DependentUpon>NewPfForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AppForms\RenameForm.resx">
+      <DependentUpon>RenameForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppForms\SetRoleForm.resx">
+      <DependentUpon>SetRoleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchForms\AirFilterControl.resx">
+      <DependentUpon>AirFilterControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchForms\AirFilterTitleControl.resx">
+      <DependentUpon>AirFilterTitleControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchForms\BottomPageSwitch.resx">
+      <DependentUpon>BottomPageSwitch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchForms\CTongdaoControl.resx">
+      <DependentUpon>CTongdaoControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchForms\CWeiHuControl.resx">
+      <DependentUpon>CWeiHuControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchForms\DManualControl.resx">
+      <DependentUpon>DManualControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchForms\DownloadTableControl.resx">
+      <DependentUpon>DownloadTableControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchForms\DTongdaoControl.resx">
+      <DependentUpon>DTongdaoControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchForms\DWeiHuControl.resx">
+      <DependentUpon>DWeiHuControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchForms\ETongdaoControl.resx">
+      <DependentUpon>ETongdaoControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchForms\EWeiHuControl.resx">
+      <DependentUpon>EWeiHuControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchForms\IOLightControl.resx">
+      <DependentUpon>IOLightControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchForms\IOSP6001Control.resx">
+      <DependentUpon>IOSP6001Control.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchForms\IOTitleControl.resx">
+      <DependentUpon>IOTitleControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchForms\IOValueControl.resx">
+      <DependentUpon>IOValueControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchForms\MachinePfLogControl.resx">
+      <DependentUpon>MachinePfLogControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchForms\PGsCControl.resx">
+      <DependentUpon>PGsCControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchForms\PGsDControl.resx">
+      <DependentUpon>PGsDControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchForms\PGsVacControl.resx">
+      <DependentUpon>PGsVacControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchForms\ProcessControl.resx">
+      <DependentUpon>ProcessControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchForms\VacPicture6001Control.resx">
+      <DependentUpon>VacPicture6001Control.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchForms\VacPicture6002Control.resx">
+      <DependentUpon>VacPicture6002Control.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchForms\VacPicture9001Control.resx">
+      <DependentUpon>VacPicture9001Control.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchForms\VacSetControl.resx">
+      <DependentUpon>VacSetControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchForms\WAlarmTableControl.resx">
+      <DependentUpon>WAlarmTableControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchForms\WAutoControl.resx">
+      <DependentUpon>WAutoControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchForms\WBaoYangControl.resx">
+      <DependentUpon>WBaoYangControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchForms\WBenzuControl.resx">
+      <DependentUpon>WBenzuControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchForms\WChuanganqiControl.resx">
+      <DependentUpon>WChuanganqiControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchForms\WIoControl.resx">
+      <DependentUpon>WIoControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchForms\WLoginControl.resx">
+      <DependentUpon>WLoginControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchForms\WChartControl.resx">
+      <DependentUpon>WChartControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchForms\WManualControl.resx">
+      <DependentUpon>WManualControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchForms\WPFControl.resx">
+      <DependentUpon>WPFControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchForms\WPFEditControl.resx">
+      <DependentUpon>WPFEditControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchForms\WSheBeiGuanLiControl.resx">
+      <DependentUpon>WSheBeiGuanLiControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchForms\WSystemMainControl.resx">
+      <DependentUpon>WSystemMainControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchForms\WTongdaoControl.resx">
+      <DependentUpon>WTongdaoControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchForms\WWeihuControl.resx">
+      <DependentUpon>WWeihuControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchForms\WXitongshedingControl.resx">
+      <DependentUpon>WXitongshedingControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchForms\WYeyaControl.resx">
+      <DependentUpon>WYeyaControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchForms\WYsgControl.resx">
+      <DependentUpon>WYsgControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwitchForms\WZhujiControl.resx">
+      <DependentUpon>WZhujiControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="control_panel_22756.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Accessibility">
+      <Guid>{1EA4DBF0-3C3B-11CF-810C-00AA00389B71}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>1</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EF.Models\EF.Models.csproj">
+      <Project>{4f3b023b-cdc6-4b23-aa3b-c25fdd09a015}</Project>
+      <Name>EF.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets" Condition="Exists('..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>

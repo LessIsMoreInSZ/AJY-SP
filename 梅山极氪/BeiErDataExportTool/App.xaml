@@ -1,0 +1,8 @@
+﻿<prism:PrismApplication
+    x:Class="BeiErDataExportTool.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:BeiErDataExportTool"
+    xmlns:prism="clr-namespace:Prism.Unity;assembly=Prism.Unity.Wpf">
+    <Application.Resources />
+</prism:PrismApplication>
