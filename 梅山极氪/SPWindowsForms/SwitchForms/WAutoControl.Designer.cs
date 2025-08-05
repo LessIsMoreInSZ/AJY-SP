@@ -427,6 +427,7 @@ namespace SPWindowsForms.SwitchForms
             this.uiSymbolButton1.TabIndex = 94;
             this.uiSymbolButton1.Text = "限位报警";
             this.uiSymbolButton1.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiSymbolButton1.Visible = false;
             this.uiSymbolButton1.Click += new System.EventHandler(this.uiSymbolButton1_Click);
             // 
             // WAutoControl

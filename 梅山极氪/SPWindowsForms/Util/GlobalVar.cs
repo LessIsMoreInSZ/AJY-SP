@@ -116,6 +116,6 @@ namespace SPWindowsForms
         public ushort HMI_Timing_PaperFilter_E { set; get; }//:WORD;					(* 顶针通道纸滤累计模次*)
         public ushort HMI_Timing_IronFilter_E { set; get; }//:WORD;					(* 顶针通道铁滤累计模次*)
 
-        public bool HMI_enable_ls { get; set; }
+        public bool[] HMI_enable_ls { get; set; } = new bool[10];
     }
 }

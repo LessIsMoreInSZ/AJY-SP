@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ClosedXML.Excel;
+using DocumentFormat.OpenXml.Bibliography;
 using EF.Models.EF.Entities;
 using SPWindowsForms.AdsConnect;
 using SPWindowsForms.AppForms;
@@ -44,6 +45,7 @@ namespace SPWindowsForms.SwitchForms
         private List<UILabel> sysLabels = new List<UILabel>();
         private List<List<UITextBox>> sysTextBoxs = new List<List<UITextBox>>();
         private List<List<UICheckBox>> sysCheckBoxs = new List<List<UICheckBox>>();
+        private List<Button> lstButtons = new List<Button>();// 20250805 Anders
         private List<UILabel> alarmLeftLabels = new List<UILabel>();
         private List<UICheckBox> alarmCheckBoxes = new List<UICheckBox>();
         private List<List<UITextBox>> alarmNumbers = new List<List<UITextBox>>();
@@ -344,7 +346,60 @@ namespace SPWindowsForms.SwitchForms
 
         #endregion
         #region Auto New sys
+        // 20250805 Anders 
 
+        private void WriteLimit(int i)
+        {
+            GlobalVar.commonAdsControl.WriteCommonBool2($".HMI_enable_ls[{i + 1}]", !GlobalVar.plcData.HMI_enable_ls[i]);
+        }
+
+        private void ChangeButtonColor(int i)
+        {
+            this.Invoke(new Action(() =>
+            {
+                if (GlobalVar.plcData.HMI_enable_ls[i])
+                    lstButtons[i].BackColor = Color.LightGreen;
+                else
+                    lstButtons[i].BackColor = Color.FromArgb(219, 51, 64);
+            }));
+
+
+        }
+
+        private Button NewLimitButton(int i, int x, int y, int weigth)
+        {
+            var btn = new Button();
+            btn.Size = new Size(weigth, 30);
+            btn.Location = new Point(x, y);
+            btn.Name = "btnLimit" + i;
+            btn.Text = "限位";
+            btn.Font = TopBtnFont;
+            //btn.RectColor = Color.White;
+            btn.BackColor = Color.FromArgb(219, 51, 64);
+            btn.Click += (s, e) => WriteLimit(i);
+            this.Controls.Add(btn);
+            return btn;
+        }
+
+        private void NewAllSysButtons(PfPageConfigModel model, int count, int newWidth)
+        {
+            lstButtons.ForEach(s => this.Controls.Remove(s));
+            lstButtons.Clear();
+            for (int chn = 0; chn < count; chn++)
+            {
+                int _count = 0;
+                //var list = new List<UIButton>();
+                var _x = leftStart + chn * newWidth;
+                var _y = 400 + _count * (sysLabelHeight + sysLabelSpace);
+                var newck = NewLimitButton(chn, _x, _y, newWidth);
+                this.Controls.Add(newck);
+                lstButtons.Add(newck);
+                _count++;
+                //sysCheckBoxs.Add(list);
+            }
+        }
+
+        // 
         private void NewAllSysLabels(PfPageConfigModel model)
         {
             sysLabels.ForEach(b => this.Controls.Remove(b));
@@ -381,8 +436,8 @@ namespace SPWindowsForms.SwitchForms
                s => this.Controls.Remove(s)
                 ));
             sysCheckBoxs.ForEach(b => b.ForEach(
-   s => this.Controls.Remove(s)
-    ));
+               s => this.Controls.Remove(s)
+                ));
             sysTextBoxs = new List<List<UITextBox>>();
             sysCheckBoxs = new List<List<UICheckBox>>();
             //   int newWidth = GetNewButtonWidth();
@@ -639,6 +694,7 @@ namespace SPWindowsForms.SwitchForms
                 clickedButton.FillColor = Color.Tomato;
                 int _newWidth = 0;
                 int _count = 0;
+
                 switch (clickedButton.Tag)
                 {
                     case "D":
@@ -647,6 +703,7 @@ namespace SPWindowsForms.SwitchForms
                         nowTopType = "D";
                         NewAllSysLabels(GlobalVar.D_PfPageConfigModel);
                         NewAllSysTextAndChecks(GlobalVar.D_PfPageConfigModel, _count, _newWidth, nowTopType);
+                        NewAllSysButtons(GlobalVar.D_PfPageConfigModel, _count, _newWidth);
                         NewAllAlarms(GlobalVar.D_PfPageConfigModel);
                         break;
                     case "C":
@@ -2193,7 +2250,7 @@ namespace SPWindowsForms.SwitchForms
                 var _exist = editPfDetails.Exists(m => m.chnType == r.chnType && m.chnorder == r.chnorder);
                 if (!_exist)
                 {
-                    editPfDetails.Add(new PfDetailTable { chnType = r.chnType, chnorder = r.chnorder, chnName = $"{ r.chnType}{r.chnorder}" });
+                    editPfDetails.Add(new PfDetailTable { chnType = r.chnType, chnorder = r.chnorder, chnName = $"{r.chnType}{r.chnorder}" });
                 }
                 var _edit = editPfDetails.FirstOrDefault(m => m.chnType == r.chnType && m.chnorder == r.chnorder);
                 PFDetailDBCommon.SetPfDetails(_edit, r);
@@ -2301,6 +2358,14 @@ namespace SPWindowsForms.SwitchForms
                                         if (alarmNumbers[5 + i][0].Visible)
                                             alarmNumbers[5 + i][0].Text = GlobalVar.plcData.hmi_alarmout_D[nowEditAlarm - 1].P_vac_Pvout[i].MathRound();
                                     }
+
+                                    // 20250805 Anders 
+                                    GlobalVar.plcData.HMI_enable_ls = GlobalVar.commonAdsControl.ReadCommonBool(".HMI_enable_ls", 10);
+
+                                    for (int i = 0; i < GlobalVar.systemSetting.d_chn_count; i++)
+                                        ChangeButtonColor(i);
+
+
                                     break;
                                 case "C":
                                     if (alarmNumbers[0][0].Visible)

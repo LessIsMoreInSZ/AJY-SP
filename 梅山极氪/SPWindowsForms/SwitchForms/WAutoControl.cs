@@ -51,7 +51,7 @@ namespace SPWindowsForms.SwitchForms
                         if (GlobalVar.NowUiDisplay == (int)NowUi.自动)
                         {
                             CommonTaskRead.ReadAuto();
-                            GlobalVar.plcData.HMI_enable_ls = GlobalVar.commonAdsControl.ReadCommonBool2(".HMI_enable_ls");
+                            //GlobalVar.plcData.HMI_enable_ls = GlobalVar.commonAdsControl.ReadCommonBool2(".HMI_enable_ls");
                             SetAllData();
 
                         }
@@ -89,7 +89,7 @@ namespace SPWindowsForms.SwitchForms
                 CommonAdsUi.SetBtnColorGrayAndGreen(btn_air, GlobalVar.plcData.hmi_auto.butt_useVac_hotmould);
 
                 // 限位报警
-                CommonAdsUi.SetBtnColorGrayAndGreen(uiSymbolButton1, GlobalVar.plcData.HMI_enable_ls);
+                //CommonAdsUi.SetBtnColorGrayAndGreen(uiSymbolButton1, GlobalVar.plcData.HMI_enable_ls);
                 
             }
             catch (Exception ex)
@@ -140,7 +140,7 @@ namespace SPWindowsForms.SwitchForms
 
         private void uiSymbolButton1_Click(object sender, EventArgs e)
         {
-            GlobalVar.commonAdsControl.WriteCommonBool2(".HMI_enable_ls", !GlobalVar.plcData.HMI_enable_ls);
+            //GlobalVar.commonAdsControl.WriteCommonBool2(".HMI_enable_ls", !GlobalVar.plcData.HMI_enable_ls);
         }
     }
 }
