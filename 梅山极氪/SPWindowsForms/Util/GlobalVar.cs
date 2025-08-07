@@ -116,6 +116,12 @@ namespace SPWindowsForms
         public ushort HMI_Timing_PaperFilter_E { set; get; }//:WORD;					(* 顶针通道纸滤累计模次*)
         public ushort HMI_Timing_IronFilter_E { set; get; }//:WORD;					(* 顶针通道铁滤累计模次*)
 
+        /// <summary>
+        /// 20250805 Anders 限位报警
+        /// </summary>
         public bool[] HMI_enable_ls { get; set; } = new bool[10];
+
+        public float[] hmi_spool_pg { get; set; } = new float[10];
+
     }
 }

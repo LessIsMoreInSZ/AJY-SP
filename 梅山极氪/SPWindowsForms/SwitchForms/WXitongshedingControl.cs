@@ -175,6 +175,18 @@ namespace SPWindowsForms.SwitchForms
                         if (GlobalVar.NowUiDisplay == (int)NowUi.系统设定)
                         {
                             CommonTaskRead.ReadUPS();
+
+                            GlobalVar.plcData.hmi_spool_pg = GlobalVar.commonAdsControl.ReadCommonReal(".hmi_spool_pg", 10);
+                            fxtxtBox0.Text = GlobalVar.plcData.hmi_spool_pg[0].ToString();
+                            fxtxtBox1.Text = GlobalVar.plcData.hmi_spool_pg[1].ToString();
+                            fxtxtBox2.Text = GlobalVar.plcData.hmi_spool_pg[2].ToString();
+                            fxtxtBox3.Text = GlobalVar.plcData.hmi_spool_pg[3].ToString();
+                            fxtxtBox4.Text = GlobalVar.plcData.hmi_spool_pg[4].ToString();
+                            fxtxtBox5.Text = GlobalVar.plcData.hmi_spool_pg[5].ToString();
+                            fxtxtBox6.Text = GlobalVar.plcData.hmi_spool_pg[6].ToString();
+                            fxtxtBox7.Text = GlobalVar.plcData.hmi_spool_pg[7].ToString();
+                            fxtxtBox8.Text = GlobalVar.plcData.hmi_spool_pg[8].ToString();
+                            fxtxtBox9.Text = GlobalVar.plcData.hmi_spool_pg[9].ToString();
                             //SetAllData();
                             SetAllDataNoInput();
                             if (loadflag)
